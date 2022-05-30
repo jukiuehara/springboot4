@@ -9,10 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p>データを取得しました</p>
-<p>product_id${fn:escapeXml(product. getProductId())}</p>
-<p>product_name${fn:escapeXml(product. getProductName())}</p>
-<p>price${fn:escapeXml(product. getPrice())}</p>
+<h2>検索結果</h2>
+<p>${fn:escapeXml(msg)}</p>
+<p>product_id${fn:escapeXml(product.getProductId())}</p>
+<p>product_name${fn:escapeXml(product.getProductName())}</p>
+<p>price${fn:escapeXml(product.getPrice())}</p>
 <a href="index">戻る</a>
 </body>
 

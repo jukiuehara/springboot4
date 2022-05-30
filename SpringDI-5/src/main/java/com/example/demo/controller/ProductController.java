@@ -26,8 +26,16 @@ public class ProductController{
 		
 
 		Product product = services.id(from.getId());
-		 model.addAttribute("product", product);
-		return "result";
+		
+		if(product==null) {
+			model.addAttribute("msg", "対象のデータはありません");
+			return "index";
+		}else {
+			model.addAttribute("msg", "データを取得しました");
+			 model.addAttribute("product", product);
+			return "result";
+		}
+		
 	}
 	
 	
