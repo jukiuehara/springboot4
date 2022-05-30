@@ -8,11 +8,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <h2>検索条件を入力してください</h2>
-<p>${fn:escapeXml(msg)}</p>
 <form:form action="result" modelAttribute="product">
-<label>product_id</label>
-<form:input path="id"/>
-<form:button>検索</form:button>
+<label>product_name</label>
+<form:input path="name"/><br>
+<label>price</label>
+<form:input path="price"/><br>
+<form:button name="param1">検索</form:button>
+<form:button name="param2">登録</form:button>
 
 </form:form>
 

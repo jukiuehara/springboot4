@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,21 +22,32 @@ public class ProductController{
 	@Autowired
 	private Services services;
 	
-	@RequestMapping("/result")
+	@RequestMapping(value ="/result",params="param1")
 	public String result(@ModelAttribute("product")IndexForm from,Model model) {
 		
-		
-
-		Product product = services.id(from.getId());
-		
-		if(product==null) {
-			model.addAttribute("msg", "対象のデータはありません");
-			return "index";
+		if(from.getPrice()==0&&"".equals(from.getName())) {
+			List<Product> list = services.findAll();
+			model.addAttribute("list", list);
 		}else {
-			model.addAttribute("msg", "データを取得しました");
-			 model.addAttribute("product", product);
-			return "result";
+			List<Product> list = services.findAll(from.getPrice(),from.getName());
+			model.addAttribute("list", list);
 		}
+
+			model.addAttribute("msg", "データを取得しました");
+			 
+			return "result";
+		
+		
+	}
+	@RequestMapping(value = "/result",params = "param2")
+	public String result2(@ModelAttribute("product")IndexForm from,Model model) {
+		Product p = new Product();
+		p.setPrice(from.getPrice());
+		p.setProductName(from.getName());
+		services.insert(p); 
+	
+		return "insertResult";
+		
 		
 	}
 	

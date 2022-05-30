@@ -10,20 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>検索結果</h2>
-<p>${fn:escapeXml(msg)}</p>
-<table border="2">
-<tr><th>id</th>
-<th>name</th>
-<th>price</th></tr>
-<c:forEach items="${list}" var="product">
-  <tr>
-    <td>${fn:escapeXml(product.getProductId())}</td>
-    <td>${fn:escapeXml(product.getProductName())}</td>
-    <td>${fn:escapeXml(product.getPrice())}</td>
-  </tr>
-</c:forEach>
-</table>
+<h2>登録完了しました</h2>
 <a href="index">戻る</a>
 </body>
 
